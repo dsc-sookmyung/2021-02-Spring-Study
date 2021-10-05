@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class HelloControllerTest {
 
     @Autowired
-    private MockMvc mvc;
+    private MockMv(c mvc;
 
     @Test
     public void hello가_리턴된다() throws Exception{
