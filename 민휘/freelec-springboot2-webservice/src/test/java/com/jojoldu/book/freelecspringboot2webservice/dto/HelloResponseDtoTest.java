@@ -1,7 +1,7 @@
 package com.jojoldu.book.freelecspringboot2webservice.dto;
 
 import com.jojoldu.book.freelecspringboot2webservice.web.dto.HelloResponseDto;
-import org.testng.annotations.Test;
+import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HelloResponseDtoTest {
