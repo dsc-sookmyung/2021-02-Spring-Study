@@ -1,4 +1,5 @@
 package com.jojoldu.book.springboot.domain.posts;
+import com.jojoldu.book.springboot.domain.BaseTimeEntity;
 import com.jojoldu.book.springboot.web.dto.HelloResponseDto;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
