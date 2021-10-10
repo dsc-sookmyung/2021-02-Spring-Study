@@ -14,7 +14,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest()  // H2 데이터베이스를 자동으로 실행
+@SpringBootTest  // H2 데이터베이스를 자동으로 실행
 public class PostRepositoryTest {
     @Autowired
     PostsRepository postsRepository;
