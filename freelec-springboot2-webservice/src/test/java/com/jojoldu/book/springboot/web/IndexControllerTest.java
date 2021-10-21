@@ -22,6 +22,7 @@ public class IndexControllerTest {
         String body = this.restTemplate.getForObject("/", String.class);
 
         //then
+        // 이 문자열이 잘 들어있는지 비교하는 테스트 코드이니까 mustache 파일과 정확히 똑같게 적기
         assertThat(body).contains("스프링 부트로 시작하는 웹 서비스");
     }
 }
