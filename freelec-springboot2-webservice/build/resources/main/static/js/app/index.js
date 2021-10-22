@@ -4,6 +4,11 @@ var index = {  //index라는 변수의 속성으로 function 추가. 중복된 �
         $('#btn-save').on('click', function () {
             _this.save();
         });
+
+        $('#btn-update').on('click', function () {
+            _this.update();
+        });
+
     },
     save : function () {
         var data = {
@@ -21,6 +26,27 @@ var index = {  //index라는 변수의 속성으로 function 추가. 중복된 �
         }).done(function() {
             alert('글이 등록되었습니다.');
             window.location.href = '/';   //글 등록이 성공하면 / 링크(=메인페이지)로 이동
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
+    },
+    update : function () {
+        var data = {
+            title: $('#title').val(),
+            content: $('#content').val()
+        };
+
+        var id = $('#id').val();
+
+        $.ajax({
+            type: 'PUT',  //REST CRUD 중 수정(update)은 PUT 메소드에 매핑
+            url: '/api/v1/posts/'+id,
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        }).done(function() {
+            alert('글이 수정되었습니다.');
+            window.location.href = '/';
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
