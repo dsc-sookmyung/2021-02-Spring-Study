@@ -9,6 +9,9 @@ var index = {  //index라는 변수의 속성으로 function 추가. 중복된 �
             _this.update();
         });
 
+        $('#btn-delete').on('click', function () {
+            _this.delete();
+        });
     },
     save : function () {
         var data = {
@@ -50,8 +53,22 @@ var index = {  //index라는 변수의 속성으로 function 추가. 중복된 �
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
-    }
+    },
+    delete : function () {
+        var id = $('#id').val();
 
+        $.ajax({
+            type: 'DELETE',
+            url: '/api/v1/posts/'+id,
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8'
+        }).done(function() {
+            alert('글이 삭제되었습니다.');
+            window.location.href = '/';
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
+    }
 };
 
 index.init();
