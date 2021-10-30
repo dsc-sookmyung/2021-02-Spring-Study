@@ -1,5 +1,7 @@
 package com.suah.book.springboot.web;
 
+import com.suah.book.springboot.config.auth.LoginUser;
+import com.suah.book.springboot.config.auth.dto.SessionUser;
 import com.suah.book.springboot.service.posts.PostsService;
 import com.suah.book.springboot.web.dto.PostsResponseDto;
 import lombok.Getter;
@@ -9,26 +11,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
+
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
 
-//    @GetMapping("/")
-//    public String index(){
-//        return "index";   //index.mustache
-//    }
-//
-    @GetMapping("/posts/save")
-    public String postsSave(){
-        return "posts-save";
-    }
-
     private final PostsService postsService;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts", postsService.findAllDesc());
+        if(user!=null){
+            model.addAttribute("userName", user.getName());
+        }
         return "index";
+    }
+
+    @GetMapping("/posts/save")
+    public String postsSave(){
+        return "posts-save";
     }
 
     @GetMapping("/posts/update/{id}")
