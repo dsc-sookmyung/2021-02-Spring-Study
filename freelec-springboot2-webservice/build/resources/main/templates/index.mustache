@@ -1,9 +1,18 @@
 {{>layout/header}}
     <h1>스프링 부트로 시작하는 웹 서비스 Ver2</h1>
     <div class="col-md-12">
+        <!-- 로그인 기능 영역 -->
         <div class="row">
             <div class="col-md-6">
                 <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+                {{#userName}} <!--만약 userName이 있다면. (머스테치는 if문 없이 t/f 여부만 판단-->
+                    Logged in as: <span id="user">{{userName}}</span>
+                    <a href="/logout" class="btn btn-info active" role="button">Logout</a> <!--스프링에서 logout 기능 기본 제공-->
+                {{/userName}}
+                {{^userName}} <!--else. (해당 값이 존재하지 않는 경우)-->
+                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a> <!--스프링 기본 제공 로그인 URL-->
+                    <a href="/oauth2/authorization/naver" class="btn btn-success active" role="button">Naver Login</a>
+                {{/userName}}
             </div>
         </div>
         <br>
