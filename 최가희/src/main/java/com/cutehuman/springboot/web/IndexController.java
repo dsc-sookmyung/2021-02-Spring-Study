@@ -24,7 +24,7 @@ public class IndexController {
         model.addAttribute("posts", postsService.findAllDesc());
         //SessionUser user = (SessionUser) httpSession.getAttribute("user"); // 2.
         if(user != null){ // 3.
-            model.addAttribute("user", user.getName());
+            model.addAttribute("loginname", user.getName());
         }
         return "index";
     }

@@ -42,13 +42,14 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-mustache')
     compile('org.springframework.boot:spring-boot-starter-oauth2-client') // 3.
     compile('org.springframework.session:spring-session-jdbc')
+    compile('org.mariadb.jdbc:mariadb-java-client')
     testCompile("org.springframework.security:spring-security-test")
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
-test {
+/*test {
     useJUnitPlatform()
-}
+}*/
 
 /*
 1. spring-boot-starter-data-jpa
