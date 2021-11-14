@@ -12,20 +12,22 @@ import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Component
-public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver {
-
+public class LoginUserArgumentResolver
+        implements HandlerMethodArgumentResolver {
     private final HttpSession httpSession;
 
     @Override
-    public boolean supppoertsParameter(MethodParameter parameter) {
-        boolean isLoginUserAnnotation = parameter.getParameterAnnotation(LoginUser.class) != null;
+    public boolean supportsParameter(MethodParameter parameter){ // 1.
+        boolean isLoginUserAnnotation
+                = parameter.getParameterAnnotation(LoginUser.class) != null;
         boolean isUserClass = SessionUser.class.equals(parameter.getParameterType());
-
         return isLoginUserAnnotation && isUserClass;
     }
 
-    @Override
-    public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws  Exception {
+    @Override // 2.
+    public Object resolveArgument(MethodParameter parameter,
+                                  ModelAndViewContainer mavContainer, NativeWebRequest webRequest,
+                                  WebDataBinderFactory binderFactory) throws Exception{
         return httpSession.getAttribute("user");
     }
 }
